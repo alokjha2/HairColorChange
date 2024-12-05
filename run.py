@@ -40,7 +40,7 @@ def CFAR(G,B,R,g,b,r,pro,bri):
     else :
         return max(ar)/min(ar) < 1.7 and max(ar) > 0.65
 
-def vis_parsing_maps(im, origin, parsing_anno, stride, save_im=False, save_path='output.jpg', mod='gold'):
+def vis_parsing_maps(im, origin, parsing_anno, stride, save_im=False, save_path='123.jpg', mod='red'):
 
     im = np.array(im)
     vis_im = im.copy().astype(np.uint8)
@@ -135,7 +135,7 @@ def vis_parsing_maps(im, origin, parsing_anno, stride, save_im=False, save_path=
     if save_im:
         cv2.imwrite(save_path, origin, [int(cv2.IMWRITE_JPEG_QUALITY), 100])
 
-def evaluate(cp='model/model.pth', input_path='4.jpg', output_path='output.jpg', mode='gold'):
+def evaluate(cp='model/model.pth', input_path='eyes.jpg', output_path='123.jpg', mode='red'):
 
     n_classes = 19
     net = BiSeNet(n_classes=n_classes)
@@ -165,4 +165,4 @@ def evaluate(cp='model/model.pth', input_path='4.jpg', output_path='output.jpg',
 
 
 if __name__ == "__main__":
-    evaluate(input_path='files/4.JPG', output_path='files/4_gold.jpg', mode='gold')
+    evaluate(input_path='files/eyes.JPG', output_path='files/123.jpg', mode='red')
